@@ -2,122 +2,102 @@
 <html>
 <head>
 	<title>Flownded - La Reina del Flow en HD</title>
-<style>
-	.toolbar {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		background-color: rgba(0, 0, 0, 0.2);
-		color: #000;
-		padding: 21px;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		opacity: 1;
-		transition: opacity 0.5s;
-	}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			background-image: url("https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681564948161.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-family: Arial, sans-serif;
+			color: #fff;
+			padding: 21px 16px;
+			text-align: center;
+		}
+		
+		.toolbar {
+			background-color: rgba(0, 0, 0, 0);
+			color: #fff;
+			padding: 21px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			opacity: 1;
+			transition: opacity 0.5s;
+		}
 
-	.toolbar.hide {
-		opacity: 0;
-	}
+		.toolbar.hide {
+			opacity: 0;
+		}
 
-	.toolbar h1 {
-		font-size: 2em;
-		margin: 0;
-	}
+		.toolbar h1 {
+			font-size: 2em;
+			margin: 0;
+		}
+		
+		h1 {
+			font-size: 2em;
+			margin-top: 50px;
+		}
+		
+		p {
+			font-size: 1.2em;
+			margin-bottom: 0px;
+		}
+		
+		button {
+			background-image: linear-gradient(to right, #FF0080, #0077be);
+			color: #F8F8F8;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 1.2em;
+			cursor: pointer;
+			margin-bottom: 21px;
+		}
 
-	h1 {
-		font-size: 2em;
-		margin-top: 50px;
-	}
+		.button-container {
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+		}
 
-	h2 {
-		font-size: 1.7em;
-		margin-top: 0;
-	}
+		.button-container button {
+			margin-right: 0;
+		}
 
-	p {
-		font-size: 1.2em;
-		margin-bottom: 0;
-	}
-
-	button {
-		background-image: linear-gradient(to right, #FF0080, #0077be);
-		color: #F8F8F8;
-		padding: 10px 20px;
-		border: none;
-		border-radius: 5px;
-		font-size: 1.2em;
-		cursor: pointer;
-		margin-bottom: 21px;
-	}
-
-	button.secondary {
-		background-image: linear-gradient(to right, #FF0080, #0077be);
-		color: #F8F8F8;
-		padding: 10px 20px;
-		border: none;
-		border-radius: 5px;
-		font-size: 1.2em;
-		cursor: pointer;
-		margin-bottom: 21px;
-	}
-
-	.button-container {
-		display: flex;
-		justify-content: flex-end;
-		width: 100%;
-	}
-
-	.button-container button {
-		margin-right: 0;
-	}
-
-	.font-small {
-		font-family: sans-serif;
-		font-size: 21px;
-		font-weight: normal;
-	}
-
-	.font-small01 {
-		font-family: sans-serif;
-		font-size: 14px;
-		font-weight: normal;
-	}
-
-	video {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
-</style>
+		.font-small {
+			font-family: sans-serif;
+			font-size: 21px;
+			font-weight: normal;
+		}
+	</style>
 </head>
 <body>
 	<div class="toolbar">
 		<h1>Flownded</h1>
 		<div class="button-container">
-			<button onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/download';">Comenzar a ver</button>
+			<button onclick="window.location.href = 'https://www.otrapagina.com';">Comenzar a ver</button>
 		</div>
 	</div>
-	<br>
 	<h1 style="margin-top: 80px;">Todos los capítulos que desees ver de La Reina del Flow, y unos extras más.</h1>
 	<p class="font-small">Disfruta donde quieras. Cancela cuando quieras.</p>
-	<p class="font-small">¿Quieres ver algún capítulo? Da click en más información para continuar con la app. </p>
-	<br>
-	<br>
-	<button class="secondary" onclick="window.location.href='https://jeamdeveloper.github.io/Flownded/info';">Más Información</button>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="container">
-		<div class="divider"></div>
-		<div class="content">
-			<h2>Una versión para Smart TV</h2>
-			<p class="font-small01">Estamos actualmente en el proceso de adaptar Flownded para su uso en televisores inteligentes, lo que permitirá a los usuarios disfrutar de los videoclips y de las dos temporadas de La Reina del Flow en alta definición en una pantalla más grande y con mayor comodidad.</p>
-		</div>
-	</div>
+
+
+	<script>
+		window.addEventListener('scroll', function() {
+			const toolbar = document.querySelector('.toolbar');
+			const distanceFromTop = toolbar.getBoundingClientRect().top;
+
+			if (distanceFromTop <= 0) {
+				toolbar.classList.add('hide');
+			} else {
+				toolbar.classList.remove('hide');
+			}
+		});
+	</script>
 </body>
 </html>
