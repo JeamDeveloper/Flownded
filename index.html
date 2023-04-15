@@ -14,20 +14,20 @@
 			text-align: center;
 		}
 		
-.toolbar {
-	background-color: rgba(0, 0, 0, 0);
-	color: #fff;
-	padding: 21px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	opacity: 1;
-	transition: opacity 0.5s;
-}
+		.toolbar {
+			background-color: rgba(0, 0, 0, 0);
+			color: #fff;
+			padding: 21px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			opacity: 1;
+			transition: opacity 0.5s;
+		}
 
 		.toolbar.hide {
 			opacity: 0;
@@ -58,14 +58,26 @@
 			cursor: pointer;
 			margin-bottom: 21px;
 		}
+
+		.button-container {
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+		}
+
+		.button-container button {
+			margin-right: 0;
+		}
 	</style>
 </head>
 <body>
 	<div class="toolbar">
 		<h1>Flownded</h1>
+		<div class="button-container">
+			<button>Comenzar a ver</button>
+		</div>
 	</div>
 	<h1 style="margin-top: 80px;">La mejor manera de ver La Reina del Flow en HD</h1>
-	<button>Comenzar a ver</button>
 
 	<script>
 		window.addEventListener('scroll', function() {
