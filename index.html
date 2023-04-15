@@ -7,24 +7,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(to bottom, transparent, black);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-  z-index: 9999;
-}
+#divider {
+			background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+			height: 50vh;
+		}
 
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+		body {
+			background-color: black;
+			color: white;
+			font-family: sans-serif;
+			font-size: 1.2em;
+			line-height: 1.6;
+			margin: 0;
+			padding: 0;
+		}
 
+		.container {
+			padding: 50px;
+		}
 
 img {
 			max-width: 100%;
@@ -173,7 +173,8 @@ button.secondary {
 <br>
 <br>
 <br>
-<div class="overlay"></div>
+	<div id="divider"></div>
+	<div class="container">
  <h2>Una versión para Smart TV</h1>
  <p class="font-small01">Estamos actualmente en el proceso de adaptar Flownded para su uso en televisores inteligentes, lo que permitirá a los usuarios disfrutar de los videoclips y de las dos temporadas de La Reina del Flow en alta definición en una pantalla más grande y con mayor comodidad.</p>
 <div style="width: 100%;">
