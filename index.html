@@ -126,12 +126,19 @@ button.secondary {
 			const toolbar = document.querySelector('.toolbar');
 			const distanceFromTop = toolbar.getBoundingClientRect().top;
 
-			if (distanceFromTop <= 0) {
-				toolbar.classList.add('hide');
-			} else {
-				toolbar.classList.remove('hide');
-			}
-		});
-	</script>
+			<script>
+  window.addEventListener('scroll', function() {
+    const toolbar = document.querySelector('.toolbar');
+    const distanceFromTop = toolbar.getBoundingClientRect().top;
+
+    if (distanceFromTop <= 0) {
+      toolbar.classList.add('hide');
+    } else if (window.scrollY === 0) { // Agrega esta condición
+      toolbar.classList.remove('hide');
+    } else {
+      toolbar.classList.remove('hide');
+    }
+  });
+</script>
 </body>
 </html>
