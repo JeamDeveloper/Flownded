@@ -121,24 +121,5 @@ button.secondary {
  <h2>Una versión para Smart TV</h1>
  <p class="font-small01">Estamos actualmente en el proceso de adaptar Flownded para su uso en televisores inteligentes, lo que permitirá a los usuarios disfrutar de los videoclips y de las dos temporadas de La Reina del Flow en alta definición en una pantalla más grande y con mayor comodidad.</p>
 
-	<script>
-		window.addEventListener('scroll', function() {
-			const toolbar = document.querySelector('.toolbar');
-			const distanceFromTop = toolbar.getBoundingClientRect().top;
-
-			<script>
-  window.addEventListener('scroll', function() {
-    const toolbar = document.querySelector('.toolbar');
-    const distanceFromTop = toolbar.getBoundingClientRect().top;
-
-    if (distanceFromTop <= 0) {
-      toolbar.classList.add('hide');
-    } else if (window.scrollY === 0) { // Agrega esta condición
-      toolbar.classList.remove('hide');
-    } else {
-      toolbar.classList.remove('hide');
-    }
-  });
-</script>
 </body>
 </html>
