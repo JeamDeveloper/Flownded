@@ -15,19 +15,24 @@
 		}
 		
 		.toolbar {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 21px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+			background-color: rgba(0, 0, 0, 0.5);
+			color: #fff;
+			padding: 21px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 1;
+			transition: opacity 0.5s;
+		}
 
+		.toolbar.hide {
+			opacity: 0;
+		}
 
 		.toolbar h1 {
 			font-size: 2em;
@@ -62,5 +67,18 @@
 	</div>
 	<h1 style="margin-top: 80px;">La mejor manera de ver La Reina del Flow en HD</h1>
 	<button>Comenzar a ver</button>
+
+	<script>
+		window.addEventListener('scroll', function() {
+			const toolbar = document.querySelector('.toolbar');
+			const distanceFromTop = toolbar.getBoundingClientRect().top;
+
+			if (distanceFromTop <= 0) {
+				toolbar.classList.add('hide');
+			} else {
+				toolbar.classList.remove('hide');
+			}
+		});
+	</script>
 </body>
 </html>
