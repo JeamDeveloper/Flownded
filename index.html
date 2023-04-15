@@ -12,6 +12,35 @@
 			color: #fff;
 			padding: 21px 16px;
 			text-align: center;
+<script>
+const body = document.querySelector('body');
+const bgImage = document.querySelector('.bg-image');
+const fadeInColor = 'rgba(0, 0, 0, 0.8)';
+
+function fadeToColor() {
+  body.style.transition = 'background-color 1s ease-in-out';
+  body.style.backgroundColor = fadeInColor;
+}
+
+function fadeToImage() {
+  body.style.transition = 'background-color 1s ease-in-out';
+  body.style.backgroundColor = '';
+}
+
+bgImage.addEventListener('load', () => {
+  body.style.backgroundImage = `url(${bgImage.src})`;
+});
+
+window.addEventListener('scroll', function() {
+  const distanceFromTop = bgImage.getBoundingClientRect().top;
+
+  if (distanceFromTop <= 0) {
+    fadeToColor();
+  } else {
+    fadeToImage();
+  }
+});
+</script>
 		}
 		
 		.toolbar {
