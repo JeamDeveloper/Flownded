@@ -100,11 +100,24 @@ video {
     cursor: pointer;
   }
 
-		.container {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-		}
+	.box {
+  background-color: #472a91;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.box:hover {
+  background-color: #3e1e7c;
+  cursor: pointer;
+}
+
+.box:active {
+  background-color: #2e1650;
+}
+
 
 	</style>
 <script>
@@ -126,19 +139,21 @@ video {
 <br>
 	<div class="container">
 		<div class="view1">
-			<h2>Esta es la vista 1</h2>
-			<p>Contenido de la vista 1</p>
+			<div class="box">
+  <p>Básico con Anuncios</p>
+</div>
 			<ul>
-				<li>Elemento 1</li>
+				<li>Gratis</li>
 				<li>Elemento 2</li>
 				<li>Elemento 3</li>
 			</ul>
 		</div>
 		<div class="view2">
-			<h2>Esta es la vista 2</h2>
-			<p>Contenido de la vista 2</p>
+		<div class="box">
+  <p>Premium</p>
+</div>
 			<ol>
-				<li>Elemento 1</li>
+				<li>2€/mes</li>
 				<li>Elemento 2</li>
 				<li>Elemento 3</li>
 			</ol>
