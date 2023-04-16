@@ -100,6 +100,61 @@ video {
     cursor: pointer;
   }
 
+.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		.card {
+			background-color: #f3f3f3;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			margin: 20px;
+			padding: 20px;
+			text-align: center;
+			width: 300px;
+		}
+
+		.card:hover {
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+			transform: translateY(-5px);
+			transition: all 0.3s ease-in-out;
+		}
+
+		h6 {
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+
+		p {
+			font-size: 16px;
+			margin-bottom: 20px;
+			color: #666;
+		}
+
+		.price {
+			font-size: 36px;
+			margin-bottom: 20px;
+			color: #472a91;
+		}
+
+		button1 {
+			background-color: #472a91;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			font-size: 18px;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+
+		button1:hover {
+			background-color: #6f41b6;
+			transition: all 0.3s ease-in-out;
+		}
+
 	</style>
 <script>
       window.onbeforeunload = function() {
@@ -118,6 +173,20 @@ video {
 <h1>Ten en cuenta los planes al registrarte en la app</h1>
 <p class="font-small2">Al registrarte en la aplicación de Flownded, es importante que tengas en cuenta los planes disponibles para que puedas elegir el que mejor se adapte a tus necesidades. Los planes varían en cuanto a la duración y el precio, así que asegúrate de elegir el que más te convenga para disfrutar al máximo de la experiencia de streaming de la Reina del Flow.</p>
 <br>
+	<div class="container">
+		<div class="card">
+			<h6>Básico con anuncios</h6>
+			<p>Disfruta de todos los contenidos con algunos anuncios.</p>
+			<p class="price">Gratis</p>
+			<button class="button1">Seleccionar</button>
+		</div>
+		<div class="card">
+			<h6>Estándar</h6>
+			<p>Disfruta de todos los contenidos sin anuncios y en calidad estándar.</p>
+			<p class="price">$7.99/mes</p>
+			<button class="button1">Seleccionar</button>
+		</div>
+	</div>
 <br>
 <br>
 </body>
