@@ -100,6 +100,12 @@ video {
     cursor: pointer;
   }
 
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
 	</style>
 <script>
       window.onbeforeunload = function() {
@@ -118,10 +124,26 @@ video {
 <h1>Ten en cuenta los planes al registrarte en la app</h1>
 <p class="font-small2">Al registrarte en la aplicación de Flownded, es importante que tengas en cuenta los planes disponibles para que puedas elegir el que mejor se adapte a tus necesidades. Los planes varían en cuanto a la duración y el precio, así que asegúrate de elegir el que más te convenga para disfrutar al máximo de la experiencia de streaming de la Reina del Flow.</p>
 <br>
-<a href="#" class="font-small2" onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/politicasyprivacidad';">Políticas de privacidad<br>y acuerdos legales</a>
-<br>
-<br>
-<a href="#" class="boton" onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/download';">Continuar Con La Descarga</a>
+	<div class="container">
+		<div class="view1">
+			<h2>Esta es la vista 1</h2>
+			<p>Contenido de la vista 1</p>
+			<ul>
+				<li>Elemento 1</li>
+				<li>Elemento 2</li>
+				<li>Elemento 3</li>
+			</ul>
+		</div>
+		<div class="view2">
+			<h2>Esta es la vista 2</h2>
+			<p>Contenido de la vista 2</p>
+			<ol>
+				<li>Elemento 1</li>
+				<li>Elemento 2</li>
+				<li>Elemento 3</li>
+			</ol>
+		</div>
+	</div>
 <br>
 <br>
 </body>
