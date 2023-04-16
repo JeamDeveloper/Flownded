@@ -52,7 +52,7 @@
 			margin-bottom: 0px;
 		}
 		
-				.button {
+			.button {
 			position: relative;
 			display: inline-block;
 			padding: 10px 20px;
@@ -60,7 +60,7 @@
 			border-radius: 5px;
 			color: #ffffff;
 			background: transparent;
-			border: 2px solid #0077CC;
+			border: 2px solid transparent;
 			overflow: hidden;
 		}
 		
@@ -76,11 +76,14 @@
 			border-radius: 5px;
 			opacity: 0;
 			transition: 0.5s;
+			border: 2px solid transparent;
 		}
 		
 		.button:hover:before {
 			opacity: 1;
+			border: 2px solid #ff4b2b;
 		}
+
 		.font-small {
 			font-family: 'Netflix Sans', sans-serif;
 			font-size: 16px;
