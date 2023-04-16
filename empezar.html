@@ -51,21 +51,6 @@
 			font-size: 1em;
 			margin-bottom: 0px;
 		}
-		
-		.button {
-			content: "";
-			position: absolute;
-			top: -2px;
-			left: -2px;
-			right: -2px;
-			bottom: -2px;
-			background: linear-gradient(to right, #FF0080, #0077be);
-			z-index: -1;
-			border-radius: 5px;
-			opacity: 1;
-			transition: 0;
-			border: 2px solid transparent;
-		}
 
 		.font-small {
 			font-family: 'Netflix Sans', sans-serif;
@@ -96,6 +81,18 @@ video {
     overflow: hidden;
   }
 
+  .boton {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(to right, #FF0080, #0077be);
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
 	</style>
 </head>
 <body>
@@ -106,6 +103,6 @@ video {
 <img src="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681600343300.png" alt="Imagen" style="width: 350px; margin-top: 31px;">
 <h1>¡Vamos a ver la serie!</h1>
 <p class="font-small2">Justo abajo estarán los términos y condiciones de la aplicación para que sepas cuáles condiciones aceptaras al usar la app.</p>
-	<button class="button">Revisar Políticas y Términos de la Aplicación</button>
+<a href="#" class="boton">Terminos y Condiciones</a>
 </body>
 </html>
