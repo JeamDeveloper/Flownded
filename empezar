@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flownded - La Reina del Flow en Streaming</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			background-image: url("https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681564948161.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-family: Arial, sans-serif;
+			color: #fff;
+			padding: 38px 16px;
+			text-align: center;
+		}
+		
+		.toolbar {
+			background-color: rgba(0, 0, 0, 0.2);
+			color: #fff;
+			padding: 21px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			opacity: 1;
+			transition: opacity 0.5s;
+		}
+
+		.toolbar.hide {
+			opacity: 0;
+		}
+
+		.toolbar h1 {
+			font-size: 2em;
+			margin: 0;
+		}
+
+		h1 {
+			font-size: 1,9em;
+		}
+		
+  h2 {
+			font-size: 1,7em;
+   color: #BDBDBD;
+  }
+
+		p {
+			font-size: 1em;
+			margin-bottom: 0px;
+		}
+		
+		button {
+			background-image: linear-gradient(to right, #FF0080, #0077be);
+			color: #F8F8F8;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 1em;
+			cursor: pointer;
+			margin-bottom: 21px;
+		}
+
+		.button-container {
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+		}
+
+		.button-container button {
+			margin-right: 0;
+		}
+
+		.font-small {
+			font-family: 'Netflix Sans', sans-serif;
+			font-size: 16px;
+			font-weight: normal;
+   font-color: #BDBDBD;
+		}
+
+	.font-small2 {
+			font-family: 'Netflix Sans', sans-serif;
+			font-size: 18px;
+			font-weight: normal;
+   font-color: #ffffff;
+   color: #BDBDBD;
+		}
+
+.btn-info {
+  font-size: 21px;
+  font-family: 'Netflix Sans', sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+	</style>
+</head>
+<body>
+<div class="toolbar">
+    <h1>Flownded</h1>
+
+</div>
+<img src="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681600343300.png" alt="Imagen" style="width: 350px; margin-top: 31px;">
+<h1>¡Vamos a ver la serie!</h1>
+<p class="font-small2">Justo abajo estarán los términos y condiciones de la aplicación para que sepas cuáles condiciones aceptaras al usar la app.</p>
+</body>
+</html>
