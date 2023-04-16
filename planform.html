@@ -102,25 +102,42 @@ video {
 
 .container {
   display: flex;
+  justify-content: space-between;
 }
 
 .view1, .view2 {
-  flex: 1;
-  text-align: center;
+  width: 45%;
 }
 
 .box {
+  width: 100%;
+  height: 100px;
   background-color: #472a91;
-  color: white;
   border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.box p {
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .container ul li:not(:last-child),
 .container ol li:not(:last-child) {
   border-bottom: 1px solid #BDBDBD;
   padding-bottom: 10px;
+}
+
+.container ul li,
+.container ol li {
+  font-size: 18px;
+  color: #424242;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 	</style>
