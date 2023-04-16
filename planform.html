@@ -100,36 +100,27 @@ video {
     cursor: pointer;
   }
 
-	.container {
+.container {
   display: flex;
-  justify-content: space-between;
 }
 
 .view1, .view2 {
-  flex-basis: 48%;
+  flex: 1;
+  text-align: center;
 }
 
 .box {
   background-color: #472a91;
-  color: #fff;
-  padding: 10px;
+  color: white;
   border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-.box:hover {
-  background-color: #472a91;
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0px 0px 10px #472a91;
-}
-
-ul, ol {
-  list-style: none;
-  padding-left: 0;
-}
-
-li {
-  padding: 5px 0;
+.container ul li:not(:last-child),
+.container ol li:not(:last-child) {
+  border-bottom: 1px solid #BDBDBD;
+  padding-bottom: 10px;
 }
 
 	</style>
@@ -150,7 +141,7 @@ li {
 <h1>Ten en cuenta los planes al registrarte en la app</h1>
 <p class="font-small2">Al registrarte en la aplicación de Flownded, es importante que tengas en cuenta los planes disponibles para que puedas elegir el que mejor se adapte a tus necesidades. Los planes varían en cuanto a la duración y el precio, así que asegúrate de elegir el que más te convenga para disfrutar al máximo de la experiencia de streaming de la Reina del Flow.</p>
 <br>
-	<div class="container">
+<div class="container">
   <div class="view1">
     <div class="box">
       <p>Básico con Anuncios</p>
