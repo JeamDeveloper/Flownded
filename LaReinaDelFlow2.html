@@ -146,6 +146,17 @@ h5 {
   border: none;
 }
 
+button:hover span {
+    animation: ripple 1s linear;
+  }
+
+  @keyframes ripple {
+    to {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
 	</style>
 
 </head>
@@ -171,9 +182,10 @@ h5 {
 </div>
 </div>
 <div style="display: flex; justify-content: center; margin: 0 16px;">
-  <button style="background-color: white; border: none; color: #333; font-size: 16px; margin-top: 16px; margin-left: 16px; padding: 12px 24px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out;">
-    Reproducir en Flownded
-  </button>
+<button style="background-color: white; border: none; color: #333; font-size: 16px; margin-top: 16px; margin-left: 16px; margin-right: 16px; padding: 12px 24px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out; position: relative; overflow: hidden;">
+  Reproducir en Flownded
+  <span style="position: absolute; background-color: rgba(200, 200, 200, 0.4); border-radius: 50%; transform: scale(0); pointer-events: none;"></span>
+</button>
 </div>
 </body>
 </html>
