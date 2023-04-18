@@ -146,68 +146,81 @@ h5 {
   border: none;
 }
 
-.btn-play {
+button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  color: black;
-  border: none;
+  padding: 0 16px;
+  height: 40px;
   border-radius: 4px;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 12px 24px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-play:hover {
-  background-color: #f5f5f5;
-  color: black;
-}
-
-.btn-play i {
-  margin-right: 8px;
-  font-size: 24px;
-  color: #e50914;
-}
-
-.btn-ripple {
-  position: relative;
-  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
   background-color: #fff;
-  border: 1px solid #ccc;
-  color: #000;
-}
-
-.btn-ripple:hover {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  overflow: hidden;
 }
 
-.btn-ripple:after {
-  content: "";
+button:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+button:focus {
+  outline: none;
+}
+
+button::before {
+  content: '';
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(200, 200, 200, 0.3); /* Gris claro */
+  pointer-events: none;
+  background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
   opacity: 0;
-  transition: all 0.3s ease-out;
+  transition: transform 0.5s, opacity 1s;
 }
 
-.btn-ripple:focus:not(:active)::after {
-  opacity: 1;
-  transform: scale(2);
-  transition: all 0.3s ease-out;
+button:active::before {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-.btn-ripple:active::after {
-  opacity: 1;
-  transform: scale(0);
-  transition: transform 0s, opacity 0.3s ease-out;
+.btn-reproducir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.btn-reproducir:hover {
+  background-color: #F2F2F2;
+}
+
+.btn-reproducir:active {
+  background-color: #D9D9D9;
+}
+
+.btn-reproducir i {
+  margin-right: 8px;
 }
 
 	</style>
@@ -234,6 +247,9 @@ h5 {
 </div>
 </div>
 </div>
-<button class="btn-ripple">Reproducir en Flownded<i margin-left: 16px; margin-top: 16px; class="fa fa-play"></i></button>
+<button class="btn-reproducir">
+  <i margin-top: 8px; margin-left: 16; class="fas fa-play"></i>
+  Reproducir en Flownded
+</button>
 </body>
 </html>
