@@ -71,13 +71,35 @@ h5 {
    color: #BDBDBD;
 		}
 
+.banner-image-container {
+  position: relative;
+  max-width: 100vw;
+  height: auto;
+}
+
 .banner-image {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  width: 100vw;
+  width: 100%;
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  z-index: 1;
+}
+
+.banner-text h1,
+.banner-text p,
+.banner-text button {
+  color: #fff;
 }
 
 .logo-img {
@@ -104,7 +126,9 @@ h5 {
 	<div class="toolbar">
 		<h1>Flownded</h1>
 	</div>
+<div class="banner-image-container">
 <img src="https://occ-0-990-2773.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABWJ6-3DE6LFNjdVvnGH0aeQzGMcYmGuh_wAJ5iKrpTXDyc8o3I_EMwbgCh5YrKxXq_lkzAQuTUEGb7n1eGQeXq0i8Px9mmRNU7fx.jpg" alt="Imagen" class="banner-image" style="width: 100vw; margin-top: 79px;">
+</div>
 <div class="divider1">
 <img src="https://occ-0-3009-360.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABXfwh8gDWQ_1VjcHzh5xeghQH2ZfZ29U2dZh188HqpUoCXe_XiTUUiOj4DjLuN4O4xCJYUiK0KRGU_GY1TfdndS29WcaYloPilUdQOcEVhbwxAqOFVoxyZtcV1vSTNHp9iLre4SQjl1mao0bKxyarOXbXnXysaSZ3KAQV0YywH6sZnANPtMGsg.png" alt="Logo" class="logo-img" margin-top: 21px;" margin-left: 16px;">
 </div>
