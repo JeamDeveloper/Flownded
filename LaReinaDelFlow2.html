@@ -118,31 +118,32 @@ h5 {
 }
 
 .divider1 {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.divider1 hr {
+  margin: 5px 0;
   border: none;
-  margin-left: 16px;
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
 }
 
 .divider1 > * {
   margin-left: 16px;
 }
 
-.divider1 > hr {
-  margin-left: 0;
-}
-
-.divider1 > div {
-  color: grey;
-}
-
-.divider1 > div:last-child {
-  margin-left: auto;
-}
-
-.divider1 > div:nth-child(2) {
-  background-color: #6200EA;
-  border-radius: 7px;
-  padding: 5px;
-  color: white;
+.toolbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 	</style>
@@ -163,11 +164,11 @@ h5 {
 <div class="divider1" style="border: none;">
   <img src="https://occ-0-3009-360.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABXfwh8gDWQ_1VjcHzh5xeghQH2ZfZ29U2dZh188HqpUoCXe_XiTUUiOj4DjLuN4O4xCJYUiK0KRGU_GY1TfdndS29WcaYloPilUdQOcEVhbwxAqOFVoxyZtcV1vSTNHp9iLre4SQjl1mao0bKxyarOXbXnXysaSZ3KAQV0YywH6sZnANPtMGsg.png" alt="Logo" class="logo-img" style="margin-top: 21px; margin-left: 16px;">
   <hr>
-  <div style="display:flex; justify-content: space-between; align-items:center; padding: 5px;">
-    <div style="color: grey; margin-left: 16px;">2021</div>
-    <div style="background-color: #6200EA; border-radius: 7px; padding: 5px; color: white;">+16</div>
-    <div style="color: grey; margin-left: 16px;">2 Temporadas | Colombia</div>
-  </div>
+<div style="display:flex; justify-content: space-between; align-items:center; margin-left: 16px;">
+  <div style="color: grey;">2021</div>
+  <div style="background-color: #6200EA; border-radius: 7px; padding: 5px; color: white; margin-left: 16px;">+16</div>
+  <div style="color: grey;">2 Temporadas | Colombia</div>
+</div>
   <hr>
 </div>
 </div>
