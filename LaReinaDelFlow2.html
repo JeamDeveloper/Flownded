@@ -173,6 +173,43 @@ h5 {
   color: #e50914;
 }
 
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #000;
+}
+
+.btn-ripple:hover {
+  cursor: pointer;
+}
+
+.btn-ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(200, 200, 200, 0.3); /* Gris claro */
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+.btn-ripple:focus:not(:active)::after {
+  opacity: 1;
+  transform: scale(2);
+  transition: all 0.3s ease-out;
+}
+
+.btn-ripple:active::after {
+  opacity: 1;
+  transform: scale(0);
+  transition: transform 0s, opacity 0.3s ease-out;
+}
+
 	</style>
 
 </head>
@@ -197,9 +234,6 @@ h5 {
 </div>
 </div>
 </div>
-<button class="btn-play">
-  <i margin-left: 16px; class="fas fa-play"></i>
-  Reproducir en Flownded
-</button>
+<button class="btn-ripple">Reproducir en Flownded<i margin-left: 16px; margin-top: 16px; class="fa fa-play"></i></button>
 </body>
 </html>
