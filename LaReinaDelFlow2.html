@@ -111,38 +111,34 @@ h5 {
   margin-left: 16px;
 }
 
-.divider1 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 16px 0;
-  margin-left: 16px;
-}
-.divider1 img {
-  margin-top: 21px;
-  margin-left: 16px;
-}
-.divider1 hr {
-  width: 100%;
+.container {
   border: none;
-  height: 1px;
-  margin: 5px 0;
-  background-color: grey;
+  padding-top: 0;
+  padding-bottom: 0;
 }
+
+.divider1 {
+  border: none;
+  margin-left: 16px;
+}
+
+.divider1 > * {
+  margin-left: 16px;
+}
+
+.divider1 > hr {
+  margin-left: 0;
+}
+
 .divider1 > div {
-  display: flex;
-  align-items: center;
+  color: grey;
 }
-.divider1 > div > div:not(:first-child) {
-  margin-left: 10px;
-}
-.divider1 > div > div:first-child {
-  margin-right: auto;
-}
-.divider1 > div > div:last-child {
+
+.divider1 > div:last-child {
   margin-left: auto;
 }
-.divider1 > div > div:nth-child(2) {
+
+.divider1 > div:nth-child(2) {
   background-color: #6200EA;
   border-radius: 7px;
   padding: 5px;
