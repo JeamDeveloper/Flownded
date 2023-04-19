@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flownded - La Reina del Flow en Streaming</title>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const referrer = document.referrer;
+        const currentUrl = window.location.href;
+        const allowedReferrers = ['https://jeamdeveloper.github.io/Flownded/'];
+        let allowedReferrer = false;
+
+        for (let i = 0; i < allowedReferrers.length; i++) {
+            if (referrer.includes(allowedReferrers[i])) {
+                allowedReferrer = true;
+                break;
+            }
+        }
+
+        if (!allowedReferrer) {
+            window.location.href = 'https://jeamdeveloper.github.io/Flownded/LaReinaDelFlow2';
+        }
+    });
+</script>
+<link rel="icon" href="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1662618700529.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			background-image: url("https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681564948161.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-family: Arial, sans-serif;
+			color: #fff;
+			padding: 21px 16px;
+			text-align: center;
+		}
+		
+		.toolbar {
+			background-color: rgba(0, 0, 0, 0.2);
+			color: #fff;
+			padding: 21px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			opacity: 1;
+			transition: opacity 0.5s;
+		}
+
+		.toolbar.hide {
+			opacity: 0;
+		}
+
+		.toolbar h1 {
+			font-size: 2em;
+			margin: 0;
+		}
+
+		h1 {
+			font-size: 2em;
+			margin-top: 16px;
+		}
+		
+h2 {
+			font-size: 1,7em;
+		}
+		
+h3 {
+			font-size: 2em;
+		}
+		
+h4 {
+			font-size: 1,2em;
+		}
+
+h5 {
+  font-size: 1.2em;
+  color: #BDBDBD;
+}
+
+		
+		p {
+			font-size: 1em;
+			margin-bottom: 0px;
+		}
+		
+		button {
+			background-image: linear-gradient(to right, #FF0080, #0077be);
+			color: #F8F8F8;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 1em;
+			cursor: pointer;
+			margin-bottom: 21px;
+		}
+
+		.button-container {
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+		}
+
+		.button-container button {
+			margin-right: 0;
+		}
+
+		.font-small {
+			font-family: 'Netflix Sans', sans-serif;
+			font-size: 23px;
+			font-weight: normal;
+		}
+
+	.font-small2 {
+			font-family: 'Netflix Sans', sans-serif;
+			font-size: 16px;
+			font-weight: normal;
+		}
+
+.btn-info {
+  font-size: 21px;
+  font-family: 'Netflix Sans', sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+	</style>
+</head>
+<body>
+	<div class="toolbar">
+		<h1>Flownded</h1>
+		<div class="button-container">
+			<button onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/download';">Descargar Flownded</button>
+		</div>
+	</div>
+<img src="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681604654283.png" alt="Imagen" style="width: 350px; margin-top: 52px;">
+	<h1 style="margin-top: 80px;">Todos los capítulos que desees ver de La Reina del Flow, Y algunos extras también.</h1>
+	<p class="font-small">Disfruta donde quieras. Cancela cuando quieras.</p>
+</div>
+	<p class="font-small">¿Quieres comenzar a ver la serie? Da click en "Más Información" para continuar</p>
+
+
+<br>
+<br>
+<button onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/empezar';">Más Información</button>
+<br>
+<br>
+<br>
+<br>
+	<h3>Una versión para Smart TV</h3>
+	<p class="font-small">Estamos actualmente en el proceso de adaptar Flownded
+para su uso en televisores inteligentes.</p>
+<br>
+<br>
+<br>
+<h3>Una calidad excepcional</h3>
+<p class="font-small">Flownded en su versión mejorada los usuarios pueden disfrutar de la serie sin el logo de Caracol Televisión y sin costo alguno.</p>
+<br>
+<br>
+<h5>JeamApps en colaboración con <a href="https://instagram.com/lareinadelflow.pty?igshid=YmMyMTA2M2Y=" target="_blank" h5>Instagram/@Lareinadelflow.pty</a></h5>
+</body>
+</html>
