@@ -146,44 +146,6 @@ h5 {
   border: none;
 }
 
-  .flownded-button {
-    display: block;
-    width: 100%;
-    max-width: 360px;
-    height: 56px;
-    margin: 16px auto;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-    background-color: #E50914;
-    color: white;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .flownded-button span {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    transform: scale(0);
-    pointer-events: none;
-  }
-  
-  .flownded-button:hover {
-    background-color: #F40612;
-  }
-  
-  .flownded-button:active span {
-    transform: scale(1);
-    transition: transform 0.5s ease-out;
-  }
-
 </style>
 </head>
 <body>
@@ -201,31 +163,11 @@ h5 {
 <div class="divider1" style="border: none;">
   <img src="https://occ-0-3009-360.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABXfwh8gDWQ_1VjcHzh5xeghQH2ZfZ29U2dZh188HqpUoCXe_XiTUUiOj4DjLuN4O4xCJYUiK0KRGU_GY1TfdndS29WcaYloPilUdQOcEVhbwxAqOFVoxyZtcV1vSTNHp9iLre4SQjl1mao0bKxyarOXbXnXysaSZ3KAQV0YywH6sZnANPtMGsg.png" alt="Logo" class="logo-img" style="margin-top: 21px; margin-left: 16px;">
 <div style="display:flex; justify-content: space-between; align-items:center; margin-left: 16px; margin-bottom: 2px; margin-top: 8px">
-  <div style="color: grey;">2021</div>
-  <div style="background-color: #6200EA; border-radius: 5px; padding: 2px; padding-right: 5px; padding-left:5px; color: white; margin-left: 16px; margin-right: 16px;">+16</div>
-  <div style="color: grey;">  2 Temporadas | Colombia</div>
+  <div style="font-size: 12px; color: grey;">2021</div>
+  <div style="background-color: #6200EA; border-radius: 5px; padding: 2px; padding-right: 5px; padding-left:5px; color: white; margin-left: 16px; margin-right: 16px; font-size: 12px;">+16</div>
+  <div style="color: grey; font-size: 12px;">  2 Temporadas  |  Colombia</div>
 </div>
 </div>
 </div>
-    <button class="ripple-effect">Reproducir en Flownded</button>
-  <script>
-    const buttons = document.querySelectorAll('.ripple-effect');
-    buttons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        const x = e.clientX;
-        const y = e.clientY;
-        const buttonTop = e.target.offsetTop;
-        const buttonLeft = e.target.offsetLeft;
-        const xInside = x - buttonLeft;
-        const yInside = y - buttonTop;
-        const circle = document.createElement('span');
-        circle.classList.add('ripple');
-        circle.style.top = `${yInside}px`;
-        circle.style.left = `${xInside}px`;
-        this.appendChild(circle);
-        setTimeout(() => circle.remove(), 500);
-      })
-    })
-  </script>
 </body>
 </html>
