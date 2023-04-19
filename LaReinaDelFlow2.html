@@ -177,6 +177,17 @@ h5 {
   opacity: 1;
 }
 
+  .netflix-button:hover span {
+    animation: ripple 1s linear;
+  }
+
+  @keyframes ripple {
+    to {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
 	</style>
 
   <link rel="stylesheet" href="styles.css">
@@ -204,10 +215,10 @@ h5 {
 </div>
 </div>
 <div>
-  <button class="netflix-button">
-    Reproducir en Flownded
-    <i class="fas fa-play"></i>
-  </button>
+<button style="background-color: white; border: none; color: #333; font-size: 16px; margin-top: 16px; margin-left: 16px; margin-right: 16px; padding: 12px 24px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out; position: relative; overflow: hidden;">
+  Reproducir en Flownded
+  <span style="position: absolute; background-color: rgba(200, 200, 200, 0.4); border-radius: 50%; transform: scale(0); pointer-events: none;"></span>
+</button>
 </div>
 <script>
   const buttons = document.querySelectorAll('.netflix-button');
