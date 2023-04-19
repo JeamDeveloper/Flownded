@@ -1,171 +1,237 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Flownded - La Reina del Flow en Streaming</title>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const referrer = document.referrer;
-        const currentUrl = window.location.href;
-        const allowedReferrers = ['https://jeamdeveloper.github.io/Flownded/'];
-        let allowedReferrer = false;
-
-        for (let i = 0; i < allowedReferrers.length; i++) {
-            if (referrer.includes(allowedReferrers[i])) {
-                allowedReferrer = true;
-                break;
-            }
-        }
-
-        if (!allowedReferrer) {
-            window.location.href = 'https://jeamdeveloper.github.io/Flownded/LaReinaDelFlow2';
-        }
-    });
-</script>
+	<title>Flownded - Ver Serie</title>
 <link rel="icon" href="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1662618700529.png">
+	<script type="text/javascript">
+		function descargar() {
+		  window.open('https://jeamdeveloper.github.io/Flownded', '_blank');
+		}
+	</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      if (window.location.href === 'https://jeamdeveloper.github.io/Flownded/LaReinaDelFlow2?action=open') {
+        window.location.href = 'https://jeamdeveloper.github.io/Flownded';
+      }
+    </script>
 	<style>
 		body {
-			background-image: url("https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681564948161.jpg");
-			background-repeat: no-repeat;
-			background-size: cover;
-			font-family: Arial, sans-serif;
-			color: #fff;
-			padding: 21px 16px;
-			text-align: center;
+  background-image: url("https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681564948161.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 		}
 		
-		.toolbar {
-			background-color: rgba(0, 0, 0, 0.2);
-			color: #fff;
-			padding: 21px;
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			opacity: 1;
-			transition: opacity 0.5s;
-		}
-
-		.toolbar.hide {
-			opacity: 0;
-		}
-
+	.toolbar {
+  background-color: #000;
+  color: #fff;
+  padding: 21px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
 		.toolbar h1 {
 			font-size: 2em;
 			margin: 0;
 		}
 
 		h1 {
-			font-size: 2em;
-			margin-top: 16px;
+			font-size: 1,9em;
 		}
 		
-h2 {
+  h2 {
 			font-size: 1,7em;
-		}
-		
-h3 {
-			font-size: 2em;
-		}
-		
-h4 {
-			font-size: 1,2em;
-		}
+   color: #BDBDBD;
+  }
 
 h5 {
   font-size: 1.2em;
   color: #BDBDBD;
 }
 
-		
-		p {
-			font-size: 1em;
-			margin-bottom: 0px;
-		}
-		
-		button {
-			background-image: linear-gradient(to right, #FF0080, #0077be);
-			color: #F8F8F8;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			font-size: 1em;
-			cursor: pointer;
-			margin-bottom: 21px;
-		}
-
-		.button-container {
-			display: flex;
-			justify-content: flex-end;
-			width: 100%;
-		}
-
-		.button-container button {
-			margin-right: 0;
-		}
+.img {
+  height: auto;
+  width: 100%;
+  margin: 0;
+}
 
 		.font-small {
 			font-family: 'Netflix Sans', sans-serif;
-			font-size: 23px;
+			font-size: 16px;
 			font-weight: normal;
+   font-color: #BDBDBD;
 		}
 
 	.font-small2 {
 			font-family: 'Netflix Sans', sans-serif;
-			font-size: 16px;
+			font-size: 18px;
 			font-weight: normal;
+   font-color: #ffffff;
+   color: #BDBDBD;
 		}
 
-.btn-info {
-  font-size: 21px;
-  font-family: 'Netflix Sans', sans-serif;
-  font-weight: normal;
-  cursor: pointer;
+.banner-image-container {
+  position: relative;
+  max-width: 100vw;
+  height: auto;
 }
 
-video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+.banner-image {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
 
-	</style>
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  z-index: 1;
+}
+
+.banner-text h1,
+.banner-text p,
+.banner-text button {
+  color: #fff;
+}
+
+.logo-img {
+  max-width: 85%;
+  height: auto;
+  display: block;
+  float: left;
+  margin-top: 21px;
+  margin-left: 16px;
+}
+
+.container {
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.divider1 {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.divider1 hr {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
+}
+
+.divider1 > * {
+  margin-left: 16px;
+}
+
+.toolbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.flownded-button {
+  background-color: #6200EA;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.flownded-button:hover {
+  background-color: #f40612;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.flownded-button:active {
+  background-color: #c70000;
+}
+
+#boton1 {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+#boton1:hover {
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+#boton1:active {
+  background-color: #fff;
+}
+
+</style>
 </head>
 <body>
-	<div class="toolbar">
-		<h1>Flownded</h1>
-		<div class="button-container">
-			<button onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/download';">Descargar Flownded</button>
-		</div>
-	</div>
-<img src="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681604654283.png" alt="Imagen" style="width: 350px; margin-top: 52px;">
-	<h1 style="margin-top: 80px;">Todos los capítulos que desees ver de La Reina del Flow, Y algunos extras también.</h1>
-	<p class="font-small">Disfruta donde quieras. Cancela cuando quieras.</p>
+  <div class="toolbar">
+    <h1 onclick="window.location.href='https://jeamdeveloper.github.io/Flownded';">Flownded</h1>
+  </div>
+<div class="banner-image-container">
+<img src="https://occ-0-990-2773.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABWJ6-3DE6LFNjdVvnGH0aeQzGMcYmGuh_wAJ5iKrpTXDyc8o3I_EMwbgCh5YrKxXq_lkzAQuTUEGb7n1eGQeXq0i8Px9mmRNU7fx.jpg" alt="Imagen" class="banner-image" style="width: 100vw; margin-top: 79px;">
 </div>
-	<p class="font-small">¿Quieres comenzar a ver la serie? Da click en "Más Información" para continuar</p>
-
-
+<div class="divider1-container">
+<div class="divider1" style="border: none;">
+  <img src="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/1681917238333.png" alt="Logo" class="logo-img" style="margin-top: 18px; margin-left: 21px;">
+<div style="display:flex; justify-content: space-between; align-items:center; margin-left: 21px; margin-bottom: 12px; margin-top: 16px">
+  <div style="font-size: 14px; color: grey;">2021</div>
+  <div style="background-color: #6200EA; border-radius: 5px; padding: 2px; padding-right: 5px; padding-left:5px; color: white; margin-left: 16px; margin-right: 16px; font-size: 14px;">+16</div>
+  <div style="color: grey; font-size: 14px;">  2 Temporadas  |  Colombia</div>
+</div>
+</div>
+</div>
+<br>
+<div style="width: 100%; padding: 0 16px; box-sizing: border-box; overflow: hidden;">
+  <button id="boton1" style="width: 100%; margin: 0; box-sizing: border-box;" class="flownded-button" onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/LaReinaDelFlow2?action=open';">Reproducir en Flownded</button>
+</div>
+</div>
 <br>
 <br>
-<button onclick="window.location.href = 'https://jeamdeveloper.github.io/Flownded/empezar';">Más Información</button>
+  <div style="margin-left: 21px; margin-right: 21px; text-align: left; font-size: 16px; color: white;">Diecisiete años después de ser injustamente encarcelada, una brillante compositora busca vengarse de los hombres que la hundieron y asesinaron a su familia.</div>
 <br>
-<br>
-<br>
-<br>
-	<h3>Una versión para Smart TV</h3>
-	<p class="font-small">Estamos actualmente en el proceso de adaptar Flownded
-para su uso en televisores inteligentes.</p>
-<br>
-<br>
-<br>
-<h3>Una calidad excepcional</h3>
-<p class="font-small">Flownded en su versión mejorada los usuarios pueden disfrutar de la serie sin el logo de Caracol Televisión y sin costo alguno.</p>
-<br>
-<br>
-<h5>JeamApps en colaboración con <a href="https://instagram.com/lareinadelflow.pty?igshid=YmMyMTA2M2Y=" target="_blank" h5>Instagram/@Lareinadelflow.pty</a></h5>
+<div style="margin-left: 21px; margin-right: 21px; text-align: left; font-size: 16px; color: white;">
+  <span style="color: grey;">Protagonizada por:</span>
+  Carolina Ramírez, Carlos Torres, Andrés Sandoval
+</div>
+<div style="margin-top: 21px;" onclick="window.navigator.share({title: 'Flownded', text: '¡Mira La Reina del Flow ahora mismo en HD!', url: 'https://jeamdeveloper.github.io/Flownded/LaReinaDelFlow2'})">
+  <img src="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/icons8-compartir-480.png" alt="Icono de compartir" style="width: 24px; height: 24px;">
+  <p style="color: grey; font-size: 14px;">Compartir</p>
+</div>
 </body>
 </html>
