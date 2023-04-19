@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reproducción del video "Avance 2: La Reina del Flow 2"</title>
+	<title>El susurro de las perlas</title>
 	<style>
-		body {
-			background-color: black;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			margin: 0;
-		}
-
 		video {
 			width: 100%;
 			height: auto;
+			margin: auto;
+			display: block;
+		}
+		body {
+			background-color: black;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
 		}
 	</style>
 </head>
@@ -27,8 +28,26 @@
 
 	<script>
 		var video = document.querySelector('video');
-		video.playbackRate = 1;
-		video.defaultPlaybackRate = 1;
+		var source = document.querySelector('source');
+
+		if (sessionStorage.getItem('cachedVideo') === 'true') {
+			source.setAttribute('src', 'https://drive.google.com/uc?export=download&id=19ked1W-Ong3JqyxG78-xpF1GG84Gx8Tg');
+			video.load();
+		} else {
+			video.addEventListener('canplaythrough', function() {
+				sessionStorage.setItem('cachedVideo', 'true');
+			});
+		}
+
+		video.addEventListener('loadedmetadata', function() {
+			video.playbackRate = 1;
+			video.defaultPlaybackRate = 1;
+			video.webkitDecodedFrameCount = 0;
+			video.webkitDroppedFrameCount = 0;
+			video.webkitPlaysInline = true;
+			document.title = 'El susurro de las perlas';
+		});
+
 	</script>
 
 </body>
