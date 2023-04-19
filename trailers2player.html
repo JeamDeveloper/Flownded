@@ -1,34 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reproducción del video "Avance 2: La Reina del Flow 2"</title>
-	<style>
-		video {
-			width: 1280px;
-			height: 720px;
-		}
-	</style>
+    <title>Reproductor de video estilo Netflix</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+    <style>
+        .plyr {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            text-align: center;
+        }
+
+        .plyr__video-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .plyr__video-embed iframe,
+        .plyr__video-embed video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .plyr__control {
+            background-color: transparent !important;
+        }
+
+        .plyr__control:hover,
+        .plyr__control[aria-expanded="true"] {
+            background-color: rgba(0,0,0,0.3) !important;
+        }
+
+        .plyr__progress--played,
+        .plyr__volume--display {
+            background-color: #E50914 !important;
+        }
+
+        .plyr__volume--display {
+            color: white !important;
+        }
+
+        button {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #E50914;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-	<video controls autoplay>
-		<source src="https://drive.google.com/u/0/uc?id=19ked1W-Ong3JqyxG78-xpF1GG84Gx8Tg&export=download" type="video/mp4">
-		Tu navegador no soporta el elemento de video.
-	</video>
+    <button onclick="playVideo()">Ver Trailer</button>
 
-	<script>
-		var video = document.querySelector('video');
+    <div class="plyr__video-embed" id="player">
+    </div>
 
-		video.playbackRate = 1;
-		video.defaultPlaybackRate = 1;
-		video.webkitDecodedFrameCount = 0;
-		video.webkitDroppedFrameCount = 0;
-		video.webkitFrameRate = 50;
-		video.webkitSupportsFullscreen = true;
-		video.webkitEnterFullscreen();
+    <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+    <script>
+        function playVideo() {
+            const player = new Plyr('#player', {
+                controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen'],
+                fullscreen: { enabled: true, fallback: true, iosNative: false }
+            });
 
-		document.title = video.title || 'Avance 2: La Reina del Flow 2';
-	</script>
+            player.source = {
+                type: 'video',
+                sources: [
+                    {
+                        src: 'https://drive.google.com/u/0/uc?id=19ked1W-Ong3JqyxG78-xpF1GG84Gx8Tg&export=download',
+                        type: 'video/mp4',
+                        size: 1080
+                    }
+                ],
+            };
 
+            player.play();
+        }
+    </script>
 </body>
 </html>
