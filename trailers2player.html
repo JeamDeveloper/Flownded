@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reproducción del video "Avance 2: La Reina del Flow 2"</title>
+	<title>Reproducción del video</title>
 	<style>
 		video {
-			max-width: 100%;
+			width: 100%;
 			height: auto;
-			display: block;
-			margin: 0 auto;
+		}
+		body {
 			background-color: black;
+			margin: 0;
+			padding: 0;
 		}
 	</style>
 </head>
@@ -18,6 +20,12 @@
 		<source src="https://drive.google.com/uc?export=download&id=19ked1W-Ong3JqyxG78-xpF1GG84Gx8Tg" type="video/mp4">
 		Tu navegador no soporta el elemento de video.
 	</video>
+
+	<script>
+		var video = document.querySelector('video');
+		video.playbackRate = 1;
+		video.defaultPlaybackRate = 1;
+	</script>
 
 </body>
 </html>
