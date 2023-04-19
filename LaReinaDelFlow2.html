@@ -146,6 +146,27 @@ h5 {
   border: none;
 }
 
+.flownded-button {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.flownded-button:hover {
+  background-color: #f40612;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.flownded-button:active {
+  background-color: #c70000;
+}
+
 </style>
 </head>
 <body>
@@ -155,11 +176,11 @@ h5 {
 </div>
 	<div class="toolbar">
 		<h1>Flownded</h1>
-  <button class="flownded-button" onclick="openFlownded()">Ver en Flownded</button>
+<button class="flownded-button" onclick="openFlownded()">Ver en Flownded</button>
 
-  <script>
+<script>
 function openFlownded() {
-  var url = 'flownded://open?url=https://jeamdeveloper.github.io/Flownded/LaReinaDelFlow2';
+  var url = 'https://jeamdeveloper.github.io/Flownded/LaReinaDelFlow2';
   window.location.href = url;
 }
 </script>
