@@ -146,69 +146,51 @@ h5 {
   border: none;
 }
 
-.netflix-button {
-  background-color: white;
+.flownded-button {
+  background-color: #fff;
   border: none;
   color: #333;
   font-size: 16px;
-  margin: 16px 16px 0;
+  margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
   padding: 12px 24px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
-  width: 100%;
 }
 
-.netflix-button::before {
+.flownded-button::before {
   content: "";
+  display: block;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.4);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  z-index: -1;
-}
-
-.netflix-button:hover::before {
-  opacity: 1;
-}
-
-  .netflix-button:hover span {
-    animation: ripple 1s linear;
-  }
-
-.button-container {
-  margin: 16px;
-}
-
-  @keyframes ripple {
-    to {
-      transform: scale(3);
-      opacity: 0;
-    }
-  }
-
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  transform: scale(0);
-  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 2em;
+  height: 2em;
   background-color: rgba(200, 200, 200, 0.4);
-  width: 100px;
-  height: 100px;
-  margin-top: -50px;
-  margin-left: -50px;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-	</style>
+.flownded-button:hover::before {
+  transform: translate(-50%, -50%) scale(3);
+  transition: transform 0.5s ease-out;
+}
 
-  <link rel="stylesheet" href="styles.css">
+.flownded-button:focus {
+  outline: none;
+}
 
+.flownded-button:active::before {
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0s ease-out;
+}
+
+</style>
 </head>
 <body>
   <div class="toolbar">
@@ -231,14 +213,13 @@ h5 {
 </div>
 </div>
 </div>
-<div>
-<button style="background-color: white; border: none; color: #333; font-size: 16px; margin-top: 16px; margin-left: 16px; margin-right: 16px; padding: 12px 24px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out; position: relative; overflow: hidden;">
+<button class="flownded-button" style="background-color: white; border: none; color: #333; font-size: 16px; margin-top: 16px; margin-left: 16px; margin-right: 16px; padding: 12px 24px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out; position: relative; overflow: hidden;">
   Reproducir en Flownded
   <span style="position: absolute; background-color: rgba(200, 200, 200, 0.4); border-radius: 50%; transform: scale(0); pointer-events: none;"></span>
 </button>
-</div>
+
 <script>
-  const buttons = document.querySelectorAll('.netflix-button');
+  const buttons = document.querySelectorAll('.flownded-button');
   buttons.forEach(button => {
     button.addEventListener('click', function(e) {
       const x = e.clientX;
