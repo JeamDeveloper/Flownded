@@ -9,10 +9,12 @@
 		  window.open('https://jeamdeveloper.github.io/Flownded/info');
 		}
 <script>
-    console.log("La URL actual es: " + window.location.href);
     if (window.location.href === "https://jeamdeveloper.github.io/Flownded/?action=open") {
-        console.log("Redirigiendo a: https://jeamdeveloper.github.io/Flownded/info");
         window.location.href = "https://jeamdeveloper.github.io/Flownded/info";
+    }
+    else if (window.location.href === "https://jeamdeveloper.github.io/Flownded/?action=2trailer2") {
+        window.close();
+        window.location.href = "https://jeamdeveloper.github.io/Flownded/trailers2player";
     }
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
