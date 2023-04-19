@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reproducción del video "Avance 2: La Reina del Flow 2"</title>
-  <style>
-    video {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
+	<title>Reproducción del video "Avance 2: La Reina del Flow 2"</title>
+	<style>
+		video {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			outline: 0;
+			background-color: black;
+		}
+		body {
+			background-color: black;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+	</style>
 </head>
 <body>
+	<video controls autoplay preload="auto" playsinline webkit-playsinline style="width:100%; height:100%;">
+		<source src="https://drive.google.com/u/0/uc?id=19ked1W-Ong3JqyxG78-xpF1GG84Gx8Tg&export=download" type="video/mp4">
+		Tu navegador no soporta el elemento de video.
+	</video>
 
-  <video controls autoplay>
-    <source src="https://drive.google.com/u/0/uc?id=19ked1W-Ong3JqyxG78-xpF1GG84Gx8Tg&export=download" type="video/mp4">
-    Tu navegador no soporta el elemento de video.
-  </video>
+	<script>
+		var video = document.querySelector('video');
+		var lastFrameTime = 0;
+		var minFrameDelay = 16.67; // Minimum frame delay in milliseconds
 
-  <script>
-    var video = document.querySelector('video');
+		function update() {
+			var currentTime = performance.now();
+			var elapsedTime = currentTime - lastFrameTime;
 
-    video.playbackRate = 1;
-    video.defaultPlaybackRate = 1;
-    video.webkitDecodedFrameCount = 0;
-    video.webkitDroppedFrameCount = 0;
-    video.webkitFrameRate = 60;
+			if (elapsedTime >= minFrameDelay) {
+				video.webkitSupportsFullscreen = true;
+				video.webkitEnterFullscreen();
+				lastFrameTime = currentTime;
+			}
 
-    document.title = video.title || 'Avance 2: La Reina del Flow 2';
-  </script>
+			// Request the next frame
+			video.requestVideoFrameCallback(update);
+		}
 
+		// Start the loop
+		video.requestVideoFrameCallback(update);
+	</script>
 </body>
 </html>
