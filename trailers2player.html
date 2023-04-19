@@ -3,22 +3,13 @@
 <head>
 	<title>Reproducción del video "Avance 2: La Reina del Flow 2"</title>
 	<style>
+		video {
+			width: 1920px;
+			height: 1080px;
+			margin: 50px auto;
+		}
 		body {
 			background-color: black;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-		}
-		video {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			min-width: 100%;
-			min-height: 100%;
-			width: auto;
-			height: auto;
-			z-index: -1;
 		}
 	</style>
 </head>
@@ -36,9 +27,7 @@
 		video.defaultPlaybackRate = 1;
 		video.webkitDecodedFrameCount = 0;
 		video.webkitDroppedFrameCount = 0;
-		video.webkitFrameRate = 50;
-		video.webkitSupportsFullscreen = true;
-		video.webkitEnterFullscreen();
+		video.webkitFrameRate = 60;
 
 		document.title = video.title || 'Avance 2: La Reina del Flow 2';
 	</script>
