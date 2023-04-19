@@ -6,17 +6,9 @@
 		video {
 			max-width: 100%;
 			height: auto;
-			margin: 50px auto;
 			display: block;
-		}
-		body {
+			margin: 0 auto;
 			background-color: black;
-			margin: 0;
-			padding: 0;
-			height: 100vh;
-			display: flex;
-			align-items: center;
-			justify-content: center;
 		}
 	</style>
 </head>
@@ -26,18 +18,6 @@
 		<source src="https://drive.google.com/uc?export=download&id=19ked1W-Ong3JqyxG78-xpF1GG84Gx8Tg" type="video/mp4">
 		Tu navegador no soporta el elemento de video.
 	</video>
-
-	<script>
-		var video = document.querySelector('video');
-
-		video.playbackRate = 1;
-		video.defaultPlaybackRate = 1;
-		video.webkitDecodedFrameCount = 0;
-		video.webkitDroppedFrameCount = 0;
-		video.webkitFrameRate = 60;
-
-		document.title = video.title || 'Avance 2: La Reina del Flow 2';
-	</script>
 
 </body>
 </html>
