@@ -146,49 +146,43 @@ h5 {
   border: none;
 }
 
-.flownded-button {
-  background-color: #fff;
-  border: none;
-  color: #333;
-  font-size: 16px;
-  margin-top: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
-  padding: 12px 24px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease-in-out;
-  position: relative;
-  overflow: hidden;
-}
-
-.flownded-button::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  width: 2em;
-  height: 2em;
-  background-color: rgba(200, 200, 200, 0.4);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.flownded-button:hover::before {
-  transform: translate(-50%, -50%) scale(3);
-  transition: transform 0.5s ease-out;
-}
-
-.flownded-button:focus {
-  outline: none;
-}
-
-.flownded-button:active::before {
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0s ease-out;
-}
+  .flownded-button {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    height: 56px;
+    margin: 16px auto;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #E50914;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .flownded-button span {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: scale(0);
+    pointer-events: none;
+  }
+  
+  .flownded-button:hover {
+    background-color: #F40612;
+  }
+  
+  .flownded-button:active span {
+    transform: scale(1);
+    transition: transform 0.5s ease-out;
+  }
 
 </style>
 </head>
@@ -213,29 +207,25 @@ h5 {
 </div>
 </div>
 </div>
-<button class="flownded-button" style="background-color: white; border: none; color: #333; font-size: 16px; margin-top: 16px; margin-left: 16px; margin-right: 16px; padding: 12px 24px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease-in-out; position: relative; overflow: hidden;">
-  Reproducir en Flownded
-  <span style="position: absolute; background-color: rgba(200, 200, 200, 0.4); border-radius: 50%; transform: scale(0); pointer-events: none;"></span>
-</button>
-
-<script>
-  const buttons = document.querySelectorAll('.flownded-button');
-  buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      const x = e.clientX;
-      const y = e.clientY;
-      const buttonTop = e.target.offsetTop;
-      const buttonLeft = e.target.offsetLeft;
-      const xInside = x - buttonLeft;
-      const yInside = y - buttonTop;
-      const circle = document.createElement('span');
-      circle.classList.add('ripple');
-      circle.style.top = `${yInside}px`;
-      circle.style.left = `${xInside}px`;
-      this.appendChild(circle);
-      setTimeout(() => circle.remove(), 500);
+    <button class="ripple-effect">Reproducir en Flownded</button>
+  <script>
+    const buttons = document.querySelectorAll('.ripple-effect');
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        const x = e.clientX;
+        const y = e.clientY;
+        const buttonTop = e.target.offsetTop;
+        const buttonLeft = e.target.offsetLeft;
+        const xInside = x - buttonLeft;
+        const yInside = y - buttonTop;
+        const circle = document.createElement('span');
+        circle.classList.add('ripple');
+        circle.style.top = `${yInside}px`;
+        circle.style.left = `${xInside}px`;
+        this.appendChild(circle);
+        setTimeout(() => circle.remove(), 500);
+      })
     })
-  })
-</script>
+  </script>
 </body>
 </html>
