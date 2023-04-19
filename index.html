@@ -9,7 +9,9 @@
 		  window.open('https://jeamdeveloper.github.io/Flownded/info');
 		}
 <script>
+    console.log("La URL actual es: " + window.location.href);
     if (window.location.href === "https://jeamdeveloper.github.io/Flownded/?action=open") {
+        console.log("Redirigiendo a: https://jeamdeveloper.github.io/Flownded/info");
         window.location.href = "https://jeamdeveloper.github.io/Flownded/info";
     }
 </script>
