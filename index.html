@@ -225,6 +225,16 @@ h5 {
   background-color: #6200EA;
 }
 
+      #downloaddiv {
+        background-color: #222;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
 </style>
 </head>
 <body>
@@ -258,6 +268,9 @@ h5 {
 <div style="margin-left: 21px; margin-right: 21px; text-align: left; font-size: 16px; color: white;">
   <span style="color: grey;">Protagonizada por:</span>
   Carolina Ramírez, Carlos Torres, Andrés Sandoval
+</div>
+<div id="downloaddiv" style="background-color: #303030; display: flex; flex-wrap: nowrap; overflow-x: auto;">
+  <!-- Contenido de la vista -->
 </div>
 <div style="margin-top: 21px;" onclick="window.navigator.share({title: 'Flownded', text: '¡Mira La Reina del Flow ahora mismo en HD!', url: 'https://jeamdeveloper.github.io/Flownded/'})">
   <img src="https://raw.githubusercontent.com/JeamDeveloper/Flownded/gh-pages/icons8-compartir-480.png" alt="Icono de compartir" style="width: 24px; height: 24px;">
