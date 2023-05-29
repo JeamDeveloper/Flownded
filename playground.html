@@ -37,22 +37,24 @@
             white-space: pre-wrap;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
         function cifrarEnlace() {
             var enlaceOriginal = document.getElementById('enlaceOriginal').value;
+            var clave = "clave_secreta_compartida";
 
-            // Genera una clave de cifrado aleatoria
-            var clave = sjcl.codec.base64.fromBits(sjcl.random.randomWords(8));
-
-            // Cifra el enlace utilizando AES
-            var enlaceCifrado = sjcl.encrypt(clave, enlaceOriginal);
+            // Cifra el enlace utilizando la clave secreta
+            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave).toString();
 
             // Muestra el enlace cifrado en la página
             document.getElementById('enlaceCifrado').innerText = enlaceCifrado;
+        }
 
-            // Almacena la clave de cifrado en el almacenamiento local del navegador
-            localStorage.setItem('claveCifrado', clave);
+        function copiarEnlaceCifrado() {
+            var enlaceCifrado = document.getElementById('enlaceCifrado');
+            enlaceCifrado.select();
+            document.execCommand('copy');
+            M.toast({html: 'Enlace cifrado copiado al portapapeles'});
         }
     </script>
 </head>
@@ -69,6 +71,7 @@
                 <textarea id="enlaceCifrado" class="materialize-textarea" readonly></textarea>
                 <label for="enlaceCifrado">Enlace cifrado</label>
             </div>
+            <button class="waves-effect waves-light btn" onclick="copiarEnlaceCifrado()">Copiar enlace cifrado</button>
         </div>
     </div>
 </body>
