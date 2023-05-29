@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cifrado de enlace de video</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+        function cifrarEnlace() {
+            var enlaceOriginal = document.getElementById('enlaceOriginal').value;
+
+            // Genera una clave de cifrado
+            var clave = CryptoJS.lib.WordArray.random(16);
+
+            // Cifra el enlace utilizando AES
+            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave).toString();
+
+            // Muestra el enlace cifrado en la página
+            document.getElementById('enlaceCifrado').innerText = enlaceCifrado;
+
+            // Almacena la clave de cifrado en el almacenamiento local del navegador
+            localStorage.setItem('claveCifrado', clave);
+        }
+    </script>
+</head>
+<body>
+    <h1>Cifrado de enlace de video</h1>
+    <label for="enlaceOriginal">Enlace original:</label>
+    <input type="text" id="enlaceOriginal">
+    <button onclick="cifrarEnlace()">Cifrar enlace</button>
+    <p>Enlace cifrado:</p>
+    <p id="enlaceCifrado"></p>
+</body>
+</html>
