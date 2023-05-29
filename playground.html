@@ -44,13 +44,13 @@
             var clave = CryptoJS.lib.WordArray.random(16); // Genera una clave aleatoria de 128 bits (16 bytes)
 
             // Cifra el enlace utilizando AES en modo CBC
-            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave, {
+            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave.toString(), {
                 mode: CryptoJS.mode.CBC,
                 padding: CryptoJS.pad.Pkcs7
             });
 
             // Convierte el enlace cifrado y la clave a strings en base64
-            var enlaceCifradoBase64 = enlaceCifrado.toString();
+            var enlaceCifradoBase64 = CryptoJS.enc.Base64.stringify(enlaceCifrado.ciphertext);
             var claveBase64 = CryptoJS.enc.Base64.stringify(clave);
 
             // Muestra el enlace cifrado en la página
