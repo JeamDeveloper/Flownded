@@ -34,28 +34,38 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/exoplayer-hls.js@1.18.6/dist/hls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/exoplayer-core@1.18.6/dist/exoplayer-core.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
-        function reproducirEnlace() {
+        async function reproducirEnlace() {
             var enlaceCifrado = document.getElementById('enlaceCifrado').value;
             var claveCifrado = localStorage.getItem('claveCifrado');
 
             if (enlaceCifrado && claveCifrado) {
-                var clave = CryptoJS.enc.Base64.parse(claveCifrado);
+                var claveBuffer = await window.crypto.subtle.importKey(
+                    'raw',
+                    new TextEncoder().encode(claveCifrado),
+                    { name: 'AES-CBC' },
+                    false,
+                    ['decrypt']
+                );
 
-                // Descifra el enlace utilizando la clave
-                var enlaceOriginalBytes = CryptoJS.AES.decrypt(enlaceCifrado, clave, {
-                    mode: CryptoJS.mode.CBC,
-                    padding: CryptoJS.pad.Pkcs7
-                });
-                var enlaceOriginal = enlaceOriginalBytes.toString(CryptoJS.enc.Utf8);
+                var iv = new Uint8Array(16); // Vector de inicialización (IV) para el modo CBC
+                var enlaceCifradoBuffer = new Uint8Array(atob(enlaceCifrado).split('').map(char => char.charCodeAt(0)));
+
+                var enlaceOriginalBuffer = await window.crypto.subtle.decrypt(
+                    {
+                        name: 'AES-CBC',
+                        iv: iv
+                    },
+                    claveBuffer,
+                    enlaceCifradoBuffer
+                );
+
+                var enlaceOriginal = new TextDecoder().decode(enlaceOriginalBuffer);
 
                 if (enlaceOriginal) {
-                    // Crea el reproductor de video
                     var playerContainer = document.getElementById('playerContainer');
                     var player = new window.ExoPlayer.Player(playerContainer);
 
-                    // Configura el reproductor con el enlace desencriptado
                     player.configure({
                         sources: [{
                             src: enlaceOriginal,
@@ -69,7 +79,6 @@
                         }
                     });
 
-                    // Inicia la reproducción del video
                     player.play();
                 }
             }
