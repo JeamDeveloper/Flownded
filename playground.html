@@ -1,88 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cifrado de enlace de video</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f5f5f5;
-        }
-
-        .card {
-            width: 400px;
-            padding: 20px;
-        }
-
-        .card-content {
-            margin-bottom: 20px;
-        }
-
-        .card-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .input-field {
-            margin-bottom: 20px;
-        }
-
-        #enlaceCifrado {
-            word-break: break-all;
-            white-space: pre-wrap;
-        }
-    </style>
-    <script>
-        function cifrarEnlace() {
-            var enlaceOriginal = document.getElementById('enlaceOriginal').value;
-            var clave = CryptoJS.lib.WordArray.random(16); // Genera una clave aleatoria de 128 bits (16 bytes)
-
-            // Cifra el enlace utilizando AES en modo CBC
-            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave.toString(), {
-                mode: CryptoJS.mode.CBC,
-                padding: CryptoJS.pad.Pkcs7
-            });
-
-            // Convierte el enlace cifrado y la clave a strings en base64
-            var enlaceCifradoBase64 = CryptoJS.enc.Base64.stringify(enlaceCifrado.ciphertext);
-            var claveBase64 = CryptoJS.enc.Base64.stringify(clave);
-
-            // Muestra el enlace cifrado en la página
-            document.getElementById('enlaceCifrado').innerText = enlaceCifradoBase64;
-
-            // Almacena la clave cifrada en el almacenamiento local del navegador
-            localStorage.setItem('claveCifrado', claveBase64);
-        }
-
-        function copiarEnlaceCifrado() {
-            var enlaceCifrado = document.getElementById('enlaceCifrado');
-            enlaceCifrado.select();
-            document.execCommand('copy');
-            M.toast({html: 'Enlace cifrado copiado al portapapeles'});
-        }
-    </script>
+  <title>Reproductor ExoPlayer V2</title>
 </head>
 <body>
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">Cifrado de enlace de video</span>
-            <div class="input-field">
-                <input type="text" id="enlaceOriginal" />
-                <label for="enlaceOriginal">Enlace original</label>
-            </div>
-            <button class="waves-effect waves-light btn" onclick="cifrarEnlace()">Cifrar enlace</button>
-            <div class="input-field">
-                <textarea id="enlaceCifrado" class="materialize-textarea" readonly></textarea>
-                <label for="enlaceCifrado">Enlace cifrado</label>
-            </div>
-            <button class="waves-effect waves-light btn" onclick="copiarEnlaceCifrado()">Copiar enlace cifrado</button>
-        </div>
-    </div>
+  <div id="player"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/exoplayer-v2@latest"></script>
+  <script>
+    // Crear el reproductor
+    var player = new exoplayer.Player({
+      modules: [exoplayer.ModuleFactory.HLS],
+      preferredTech: 'html5',
+      hls: {
+        capLevelToPlayerSize: true,
+        enableWorker: true,
+        enableSoftwareAES: true,
+        manifestLoadingMaxRetry: 10
+      }
+    });
+
+    // Configurar el origen del video
+    var source = {
+      src: 'https://archive.org/download/LRDF-S2/2x55%20Cap%C3%ADtulo%2055.mp4',
+      type: 'application/x-mpegURL',
+      hdr: true,
+      streaming: true,
+      loop: false,
+      subtitles: []
+    };
+
+    // Configurar la calidad y velocidad de fotogramas
+    var videoTrack = {
+      quality: 'hd',
+      frameRate: 50
+    };
+
+    source.videoTracks = [videoTrack];
+
+    // Reproducir el video
+    player.open(source, document.getElementById('player'));
+
+    // Controlar el reproductor (opcional)
+    var controls = new exoplayer.Controls(player);
+    controls.initialize();
+
+    // Opcional: Muestra información de depuración en la consola
+    player.setLogLevel(exoplayer.LogLevel.DEBUG);
+  </script>
 </body>
 </html>
