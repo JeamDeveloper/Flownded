@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <style>
         body {
             display: flex;
@@ -37,17 +38,26 @@
             white-space: pre-wrap;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
         function cifrarEnlace() {
             var enlaceOriginal = document.getElementById('enlaceOriginal').value;
-            var clave = "clave_secreta_compartida";
+            var clave = CryptoJS.lib.WordArray.random(16); // Genera una clave aleatoria de 128 bits (16 bytes)
 
-            // Cifra el enlace utilizando la clave secreta
-            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave).toString();
+            // Cifra el enlace utilizando AES en modo CBC
+            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave, {
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+
+            // Convierte el enlace cifrado y la clave a strings en base64
+            var enlaceCifradoBase64 = enlaceCifrado.toString();
+            var claveBase64 = CryptoJS.enc.Base64.stringify(clave);
 
             // Muestra el enlace cifrado en la página
-            document.getElementById('enlaceCifrado').innerText = enlaceCifrado;
+            document.getElementById('enlaceCifrado').innerText = enlaceCifradoBase64;
+
+            // Almacena la clave cifrada en el almacenamiento local del navegador
+            localStorage.setItem('claveCifrado', claveBase64);
         }
 
         function copiarEnlaceCifrado() {
