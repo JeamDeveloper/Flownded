@@ -1,18 +1,52 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Cifrado de enlace de video</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .card {
+            width: 400px;
+            padding: 20px;
+        }
+
+        .card-content {
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            margin-bottom: 20px;
+        }
+
+        #enlaceCifrado {
+            word-break: break-all;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js"></script>
     <script>
         function cifrarEnlace() {
             var enlaceOriginal = document.getElementById('enlaceOriginal').value;
 
-            // Genera una clave de cifrado
-            var clave = CryptoJS.lib.WordArray.random(16);
+            // Genera una clave de cifrado aleatoria
+            var clave = sjcl.codec.base64.fromBits(sjcl.random.randomWords(8));
 
             // Cifra el enlace utilizando AES
-            var enlaceCifrado = CryptoJS.AES.encrypt(enlaceOriginal, clave).toString();
+            var enlaceCifrado = sjcl.encrypt(clave, enlaceOriginal);
 
             // Muestra el enlace cifrado en la página
             document.getElementById('enlaceCifrado').innerText = enlaceCifrado;
@@ -23,11 +57,19 @@
     </script>
 </head>
 <body>
-    <h1>Cifrado de enlace de video</h1>
-    <label for="enlaceOriginal">Enlace original:</label>
-    <input type="text" id="enlaceOriginal">
-    <button onclick="cifrarEnlace()">Cifrar enlace</button>
-    <p>Enlace cifrado:</p>
-    <p id="enlaceCifrado"></p>
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">Cifrado de enlace de video</span>
+            <div class="input-field">
+                <input type="text" id="enlaceOriginal" />
+                <label for="enlaceOriginal">Enlace original</label>
+            </div>
+            <button class="waves-effect waves-light btn" onclick="cifrarEnlace()">Cifrar enlace</button>
+            <div class="input-field">
+                <textarea id="enlaceCifrado" class="materialize-textarea" readonly></textarea>
+                <label for="enlaceCifrado">Enlace cifrado</label>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
