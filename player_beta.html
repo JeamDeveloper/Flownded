@@ -32,8 +32,9 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/exoplayer-hls.js@1.7.0/dist/hls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/exoplayer-core@1.8.6/dist/exoplayer-core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exoplayer-hls.js@1.18.6/dist/hls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exoplayer-core@1.18.6/dist/exoplayer-core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
         function reproducirEnlace() {
             var enlaceCifrado = document.getElementById('enlaceCifrado').value;
@@ -49,7 +50,7 @@
                 if (enlaceOriginal) {
                     // Crea el reproductor de video
                     var playerContainer = document.getElementById('playerContainer');
-                    var player = new window.ExoPlayer.Player(playerContainer);
+                    var player = new ExoPlayer.Player(playerContainer);
 
                     // Configura el reproductor con el enlace desencriptado
                     player.configure({
