@@ -44,13 +44,16 @@
                 var clave = CryptoJS.enc.Base64.parse(claveCifrado);
 
                 // Descifra el enlace utilizando la clave
-                var enlaceOriginalBytes = CryptoJS.AES.decrypt(enlaceCifrado, clave);
+                var enlaceOriginalBytes = CryptoJS.AES.decrypt(enlaceCifrado, clave, {
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7
+                });
                 var enlaceOriginal = enlaceOriginalBytes.toString(CryptoJS.enc.Utf8);
 
                 if (enlaceOriginal) {
                     // Crea el reproductor de video
                     var playerContainer = document.getElementById('playerContainer');
-                    var player = new ExoPlayer.Player(playerContainer);
+                    var player = new window.ExoPlayer.Player(playerContainer);
 
                     // Configura el reproductor con el enlace desencriptado
                     player.configure({
