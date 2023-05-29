@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reproductor de video con ExoPlayer</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        #playerContainer {
+            width: 640px;
+            height: 360px;
+        }
+
+        .input-field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .input-field input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .input-field button {
+            flex-shrink: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exoplayer-hls.js@1.7.0/dist/hls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exoplayer-core@1.8.6/dist/exoplayer-core.js"></script>
+    <script>
+        function reproducirEnlace() {
+            var enlaceCifrado = document.getElementById('enlaceCifrado').value;
+            var claveCifrado = localStorage.getItem('claveCifrado');
+
+            if (enlaceCifrado && claveCifrado) {
+                var clave = CryptoJS.enc.Base64.parse(claveCifrado);
+
+                // Descifra el enlace utilizando la clave
+                var enlaceOriginalBytes = CryptoJS.AES.decrypt(enlaceCifrado, clave);
+                var enlaceOriginal = enlaceOriginalBytes.toString(CryptoJS.enc.Utf8);
+
+                if (enlaceOriginal) {
+                    // Crea el reproductor de video
+                    var playerContainer = document.getElementById('playerContainer');
+                    var player = new window.ExoPlayer.Player(playerContainer);
+
+                    // Configura el reproductor con el enlace desencriptado
+                    player.configure({
+                        sources: [{
+                            src: enlaceOriginal,
+                            type: 'application/x-mpegURL'
+                        }],
+                        autoplay: true,
+                        aspectRatio: '16:9',
+                        hls: {
+                            enableWorker: true,
+                            enableSoftwareAES: true
+                        }
+                    });
+
+                    // Inicia la reproducción del video
+                    player.play();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="input-field">
+        <input type="text" id="enlaceCifrado" placeholder="Enlace cifrado" />
+        <button onclick="reproducirEnlace()">Reproducir</button>
+    </div>
+    <div id="playerContainer"></div>
+</body>
+</html>
