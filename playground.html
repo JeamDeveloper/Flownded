@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reproductor ExoPlayer V2</title>
+  <title>Reproductor ExoPlayer 1.18.7</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #player {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
   <div id="player"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/exoplayer-v2@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/exoplayer-v1@1.18.7"></script>
   <script>
+    function resizePlayer() {
+      var playerContainer = document.getElementById('player');
+      var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      playerContainer.style.width = screenWidth + 'px';
+      playerContainer.style.height = screenHeight + 'px';
+    }
+
+    window.addEventListener('resize', resizePlayer);
+
     // Crear el reproductor
-    var player = new exoplayer.Player({
-      modules: [exoplayer.ModuleFactory.HLS],
-      preferredTech: 'html5',
-      hls: {
-        capLevelToPlayerSize: true,
-        enableWorker: true,
-        enableSoftwareAES: true,
-        manifestLoadingMaxRetry: 10
-      }
-    });
+    var player = new MediaExoPlayer();
 
     // Configurar el origen del video
     var source = {
       src: 'https://archive.org/download/LRDF-S2/2x55%20Cap%C3%ADtulo%2055.mp4',
       type: 'application/x-mpegURL',
-      hdr: true,
       streaming: true,
       loop: false,
       subtitles: []
@@ -40,14 +52,18 @@
     source.videoTracks = [videoTrack];
 
     // Reproducir el video
-    player.open(source, document.getElementById('player'));
+    player.setup(document.getElementById('player'));
+    player.setDataSource(source);
+    player.prepare();
 
     // Controlar el reproductor (opcional)
-    var controls = new exoplayer.Controls(player);
-    controls.initialize();
+    // Aquí deberías implementar tus propios controles personalizados o utilizar una librería de terceros.
 
     // Opcional: Muestra información de depuración en la consola
-    player.setLogLevel(exoplayer.LogLevel.DEBUG);
+    player.enableDebugLogs();
+
+    // Redimensionar el reproductor inicialmente
+    resizePlayer();
   </script>
 </body>
 </html>
