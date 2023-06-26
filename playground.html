@@ -5,20 +5,29 @@
   <script>
     function decryptText() {
       var encryptedText = document.getElementById('encryptedText').value;
-      var decryptedText = decodeURIComponent(JSON.parse('"' + encryptedText + '"'));
+      var decryptedText = unescape(encryptedText.replace(/\\u/g, '%u'));
       document.getElementById('decryptedText').textContent = decryptedText;
+    }
+    
+    function copyResult() {
+      var decryptedText = document.getElementById('decryptedText');
+      decryptedText.select();
+      document.execCommand('copy');
+      alert('Texto copiado al portapapeles: ' + decryptedText.value);
     }
   </script>
 </head>
 <body>
   <h1>Text Decryption</h1>
-  <label for="encryptedText">Enter encrypted text:</label>
+  <label for="encryptedText">Ingresa el texto cifrado:</label>
   <br>
   <input type="text" id="encryptedText">
-  <button onclick="decryptText()">Decrypt</button>
+  <button onclick="decryptText()">Descifrar</button>
   <br>
-  <label for="decryptedText">Decrypted text:</label>
+  <label for="decryptedText">Texto descifrado:</label>
   <br>
   <textarea id="decryptedText" rows="4" cols="50" readonly></textarea>
+  <br>
+  <button onclick="copyResult()">Copiar resultado</button>
 </body>
 </html>
