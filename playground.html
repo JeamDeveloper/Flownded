@@ -4,7 +4,7 @@
   <title>Text Encryption/Decryption</title>
   <style>
     textarea {
-      resize: none;
+      resize: vertical;
     }
   </style>
   <script>
@@ -35,14 +35,22 @@
 
     function fixJsonStructure() {
       var jsonText = document.getElementById('jsonText').value;
+      var formattedJson = '';
       try {
-        var parsedJson = JSON.parse(jsonText);
-        var formattedJson = JSON.stringify(parsedJson, null, 2);
-        document.getElementById('formattedJson').value = formattedJson;
-        adjustTextAreaHeight(document.getElementById('formattedJson'));
+        formattedJson = JSON.stringify(JSON.parse(jsonText), null, 2);
       } catch (error) {
         // No es un JSON válido, no se realiza ninguna transformación adicional
       }
+      var formattedTextArea = document.getElementById('formattedJson');
+      formattedTextArea.value = formattedJson;
+      adjustTextAreaHeight(formattedTextArea);
+    }
+
+    function copyFormattedJson() {
+      var formattedJson = document.getElementById('formattedJson');
+      formattedJson.select();
+      document.execCommand('copy');
+      alert('Texto copiado al portapapeles: ' + formattedJson.value);
     }
   </script>
 </head>
@@ -70,6 +78,8 @@
   <label for="formattedJson">JSON corregido:</label>
   <br>
   <textarea id="formattedJson" rows="4" cols="50" readonly></textarea>
+  <br>
+  <button onclick="copyFormattedJson()">Copiar JSON corregido</button>
 
   <script>
     // Código adicional si es necesario
