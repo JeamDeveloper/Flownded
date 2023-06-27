@@ -32,6 +32,18 @@
       document.execCommand('copy');
       alert('Texto copiado al portapapeles: ' + decryptedText.value);
     }
+
+    function fixJsonStructure() {
+      var jsonText = document.getElementById('jsonText').value;
+      try {
+        var parsedJson = JSON.parse(jsonText);
+        var formattedJson = JSON.stringify(parsedJson, null, 2);
+        document.getElementById('formattedJson').value = formattedJson;
+        adjustTextAreaHeight(document.getElementById('formattedJson'));
+      } catch (error) {
+        // No es un JSON válido, no se realiza ninguna transformación adicional
+      }
+    }
   </script>
 </head>
 <body>
@@ -46,6 +58,18 @@
   <textarea id="decryptedText" rows="4" cols="50" readonly></textarea>
   <br>
   <button onclick="copyResult()">Copiar resultado</button>
+
+  <hr>
+
+  <h2>Corregir estructura JSON</h2>
+  <label for="jsonText">Ingresa el código JSON:</label>
+  <br>
+  <textarea id="jsonText" rows="4" cols="50"></textarea>
+  <button onclick="fixJsonStructure()">Corregir estructura</button>
+  <br>
+  <label for="formattedJson">JSON corregido:</label>
+  <br>
+  <textarea id="formattedJson" rows="4" cols="50" readonly></textarea>
 
   <script>
     // Código adicional si es necesario
