@@ -2,49 +2,41 @@
 <html>
 <head>
   <title>Text Encryption/Decryption</title>
+  <style>
+    textarea {
+      resize: none;
+    }
+  </style>
   <script>
+    function adjustTextAreaHeight(textArea) {
+      textArea.style.height = "auto";
+      textArea.style.height = textArea.scrollHeight + "px";
+    }
+
     function decryptText() {
       var encryptedText = document.getElementById('encryptedText').value;
       var decryptedText = unescape(encryptedText.replace(/\\u/g, '%u'));
       try {
-        decryptedText = JSON.parse(decryptedText);
+        decryptedText = JSON.stringify(JSON.parse(decryptedText), null, 2);
       } catch (error) {
         // No es un JSON válido, no se realiza ninguna transformación adicional
       }
-      document.getElementById('decryptedText').value = decryptedText;
+      var decryptedTextArea = document.getElementById('decryptedText');
+      decryptedTextArea.value = decryptedText;
+      adjustTextAreaHeight(decryptedTextArea);
     }
-    
+
     function copyResult() {
       var decryptedText = document.getElementById('decryptedText');
       decryptedText.select();
       document.execCommand('copy');
       alert('Texto copiado al portapapeles: ' + decryptedText.value);
     }
-    
-    function encryptText() {
-      var originalText = document.getElementById('originalText').value;
-      var encryptedText = JSON.stringify(JSON.parse(originalText), null, 2)
-        .replace(/%u/g, '\\u')
-        .replace(/</g, '\\u003c')
-        .replace(/>/g, '\\u003e')
-        .replace(/&/g, '\\u0026')
-        .replace(/'/g, '\\u0027');
-      document.getElementById('encryptedText').value = encryptedText;
-    }
-    
-    function copyEncryptedResult() {
-      var encryptedText = document.getElementById('encryptedText');
-      encryptedText.select();
-      document.execCommand('copy');
-      alert('Texto cifrado copiado al portapapeles: ' + encryptedText.value);
-    }
   </script>
 </head>
 <body>
   <h1>Text Encryption/Decryption</h1>
-  
-  <h2>Decryption</h2>
-  <label for="encryptedText">Ingresa el texto cifrado:</label>
+  <label for="encryptedText">Ingresa el texto:</label>
   <br>
   <input type="text" id="encryptedText">
   <button onclick="decryptText()">Descifrar</button>
@@ -54,17 +46,9 @@
   <textarea id="decryptedText" rows="4" cols="50" readonly></textarea>
   <br>
   <button onclick="copyResult()">Copiar resultado</button>
-  
-  <h2>Encryption</h2>
-  <label for="originalText">Ingresa el texto original:</label>
-  <br>
-  <textarea id="originalText" rows="4" cols="50"></textarea>
-  <button onclick="encryptText()">Cifrar</button>
-  <br>
-  <label for="encryptedText">Texto cifrado:</label>
-  <br>
-  <textarea id="encryptedText" rows="4" cols="50" readonly></textarea>
-  <br>
-  <button onclick="copyEncryptedResult()">Copiar resultado cifrado</button>
+
+  <script>
+    // Código adicional si es necesario
+  </script>
 </body>
 </html>
