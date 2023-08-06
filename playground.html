@@ -3,6 +3,7 @@
 <head>
     <title>Detección de Key de Autotune</title>
     <script src="https://cdn.jsdelivr.net/npm/tone@14"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tonal@5"></script>
 </head>
 <body>
     <form id="upload-form">
@@ -20,24 +21,23 @@
             reader.onload = async function(event) {
                 const arrayBuffer = event.target.result;
                 const audioBuffer = await Tone.context.decodeAudioData(arrayBuffer);
-                const key = detectKeyUsingToneJS(audioBuffer);
-                displayResult(key);
+                detectKeyUsingTonal(audioBuffer);
             };
 
             reader.readAsArrayBuffer(file);
         }
 
-        function detectKeyUsingToneJS(audioBuffer) {
-            // Aquí irá el código para analizar el audio y detectar la key usando Tone.js
-            // Ejemplo de detección ficticia para demostración:
-            const keyOptions = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-            const randomIndex = Math.floor(Math.random() * keyOptions.length);
-            return keyOptions[randomIndex];
-        }
+        async function detectKeyUsingTonal(audioBuffer) {
+            const audioData = [];
+            for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
+                audioData.push(audioBuffer.getChannelData(channel));
+            }
 
-        function displayResult(key) {
+            const key = tonal.key.getKey(audioData, audioBuffer.sampleRate);
+            const keyName = tonal.Note.pc(key.mode === 'minor' ? key.tonic + 'm' : key.tonic);
+
             const resultDiv = document.getElementById('result');
-            resultDiv.innerText = `La Key detectada es: ${key}`;
+            resultDiv.innerText = `La Key detectada es: ${keyName}`;
         }
     </script>
 </body>
