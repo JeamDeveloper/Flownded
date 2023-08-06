@@ -8,14 +8,12 @@
 <body>
     <form id="upload-form">
         <input type="file" id="music-file" accept=".mp3,.wav">
-        <button type="button" onclick="detectKey()">Detectar Key</button>
     </form>
-    <div id="result"></div>
+    <div id="progress">Cargando archivo...</div>
+    <div id="result" style="display: none;"></div>
 
     <script>
-        async function detectKey() {
-            const fileInput = document.getElementById('music-file');
-            const file = fileInput.files[0];
+        async function processFile(file) {
             const reader = new FileReader();
 
             reader.onload = async function(event) {
@@ -27,7 +25,7 @@
             reader.readAsArrayBuffer(file);
         }
 
-        async function detectKeyUsingTonal(audioBuffer) {
+        function detectKeyUsingTonal(audioBuffer) {
             const audioData = [];
             for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
                 audioData.push(audioBuffer.getChannelData(channel));
@@ -36,9 +34,23 @@
             const key = tonal.key.getKey(audioData, audioBuffer.sampleRate);
             const keyName = tonal.Note.pc(key.mode === 'minor' ? key.tonic + 'm' : key.tonic);
 
+            const progressDiv = document.getElementById('progress');
             const resultDiv = document.getElementById('result');
+
+            progressDiv.style.display = 'none';
+            resultDiv.style.display = 'block';
             resultDiv.innerText = `La Key detectada es: ${keyName}`;
         }
+
+        const fileInput = document.getElementById('music-file');
+        fileInput.addEventListener('change', function(event) {
+            const selectedFile = event.target.files[0];
+            if (selectedFile) {
+                const progressDiv = document.getElementById('progress');
+                progressDiv.innerText = 'Procesando...';
+                processFile(selectedFile);
+            }
+        });
     </script>
 </body>
 </html>
