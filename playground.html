@@ -1,93 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Detección de Key de Autotune</title>
-    <script src="https://cdn.jsdelivr.net/npm/tone@14"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tonal@5"></script>
+    <title>Obtener firma de APK</title>
 </head>
 <body>
-    <form id="upload-form">
-        <input type="file" id="music-file" accept=".mp3,.wav">
-    </form>
-    <div id="progress">Cargando archivo...</div>
-    <div id="result" style="display: none;"></div>
+    <h1>Subir archivo APK</h1>
+    <input type="file" id="apkFileInput">
+    <button onclick="getApkSignature()">Obtener Firma</button>
+    <p id="signature"></p>
+    <button id="downloadButton" style="display: none;">Descargar Firma</button>
 
     <script>
-        async function processFile(file) {
-            const reader = new FileReader();
+        async function getApkSignature() {
+            const fileInput = document.getElementById('apkFileInput');
+            const signatureElement = document.getElementById('signature');
+            const downloadButton = document.getElementById('downloadButton');
 
-            reader.onload = async function(event) {
-                const arrayBuffer = event.target.result;
-                const audioBuffer = await Tone.context.decodeAudioData(arrayBuffer);
-                detectKeyUsingTonal(audioBuffer);
-            };
-
-            reader.readAsArrayBuffer(file);
-        }
-
-        function detectKeyUsingTonal(audioBuffer) {
-            const audioData = [];
-            for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
-                audioData.push(audioBuffer.getChannelData(channel));
-            }
-
-            const key = tonal.key.getKey(audioData, audioBuffer.sampleRate);
-            const keyName = tonal.Note.pc(key.tonic) + (key.mode === 'minor' ? 'm' : '');
-
-            const progressDiv = document.getElementById('progress');
-            const resultDiv = document.getElementById('result');
-
-            progressDiv.style.display = 'none';
-            resultDiv.style.display = 'block';
-            resultDiv.innerText = `La Key detectada es: ${keyName}`;
-        }
-
-        const fileInput = document.getElementById('music-file');
-        fileInput.addEventListener('change', function(event) {
-            const selectedFile = event.target.files[0];
-            if (selectedFile) {
-                const progressDiv = document.getElementById('progress');
-                const progressText = document.createElement('span');
-                progressDiv.innerHTML = 'Procesando...';
-                progressDiv.appendChild(progressText);
-
+            if (fileInput.files.length > 0) {
+                const apkFile = fileInput.files[0];
                 const reader = new FileReader();
-                reader.onload = async function(event) {
-                    const arrayBuffer = event.target.result;
-                    const audioBuffer = await Tone.context.decodeAudioData(arrayBuffer);
 
-                    let processedFrames = 0;
-                    const totalFrames = audioBuffer.length;
-                    const batchSize = 1024;
+                reader.onload = async function() {
+                    const arrayBuffer = reader.result;
+                    const byteArray = new Uint8Array(arrayBuffer);
 
-                    const processBatch = async () => {
-                        const remainingFrames = totalFrames - processedFrames;
-                        const framesToProcess = Math.min(batchSize, remainingFrames);
+                    // Simulando la obtención de la firma (reemplaza con tu lógica real)
+                    const signature = "EjemploDeFirma";
 
-                        const audioData = [];
-                        for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
-                            audioData.push(audioBuffer.getChannelData(channel).subarray(processedFrames, processedFrames + framesToProcess));
-                        }
+                    signatureElement.textContent = 'Firma: ' + signature;
+                    downloadButton.style.display = 'block';
 
-                        processedFrames += framesToProcess;
-
-                        const progressPercentage = Math.floor((processedFrames / totalFrames) * 100);
-                        progressText.innerText = `Procesando... ${progressPercentage}%`;
-
-                        if (processedFrames < totalFrames) {
-                            await processBatch();
-                        } else {
-                            progressDiv.style.display = 'none';
-                            detectKeyUsingTonal(audioBuffer);
-                        }
-                    };
-
-                    processBatch();
+                    generateSignatureScript(signature);
                 };
 
-                reader.readAsArrayBuffer(selectedFile);
+                reader.readAsArrayBuffer(apkFile);
             }
-        });
+        }
+
+        function generateSignatureScript(signature) {
+            const scriptContent = `const apkSignature = "${signature}";`;
+            const scriptBlob = new Blob([scriptContent], { type: 'application/javascript' });
+            const scriptURL = URL.createObjectURL(scriptBlob);
+            const scriptElement = document.createElement('script');
+            scriptElement.src = scriptURL;
+            document.body.appendChild(scriptElement);
+        }
+
+        function downloadSignature() {
+            const signatureContent = `const apkSignature = "${apkSignature}";`;
+            const signatureBlob = new Blob([signatureContent], { type: 'application/javascript' });
+            const signatureURL = URL.createObjectURL(signatureBlob);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = signatureURL;
+            downloadLink.download = 'firma.js';
+            downloadLink.click();
+        }
     </script>
 </body>
 </html>
